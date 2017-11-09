@@ -1,0 +1,3 @@
+2 select cos from
+3 select from where
+4 select tatdatdatdtaa from

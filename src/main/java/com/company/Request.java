@@ -40,26 +40,28 @@ public class Request {
         a.Set_Rqst(b.Get_Rqst());
     }
 
-    public void Take_Rqst() {
-        Scanner read = new Scanner(System.in);
+    public void Take_Rqst(Scanner read) {
 
-        if(read.hasNextInt())
+
+        if(read.hasNextInt()) {
             num = read.nextInt();
+            if(read.hasNextLine())
+                rqst = read.nextLine();
+            else
+                System.out.println("No request");
+        }
         else
             System.out.println("Integer first");
-
-
-        if(read.hasNextLine())
-            rqst = read.nextLine();
-        else
-            System.out.println("No request");
-
-        read.close();
     }
 
     public boolean Test_Rqst(){
 
         rqst = rqst.toLowerCase();
+
+        if(rqst.equals("")){
+            System.out.println("Empty request");
+            return false;
+        }
         if(rqst.matches("(.*)select(.*)from(.*)") || rqst.matches("(.*)from(.*)where(.*)") || rqst.matches("(.*)where(.*)order by(.*)") || rqst.matches("(.*)order by(.*)")){
             return true;
         }

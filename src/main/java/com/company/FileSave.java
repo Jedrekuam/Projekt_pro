@@ -25,23 +25,24 @@ public class FileSave {
                 break;
             }
         }
-        if(repeat)
+        if(!repeat)
             rqst_array.add(new Request(rqst));
     }
 
     public void Save_File() throws FileNotFoundException {
         writer = new PrintWriter("odp.txt");
 
-        int change = 1;
-        while(change > 0)
+        boolean zmiana = true;
+        while(!zmiana)
         {
-            change = 0;
+            zmiana = false;
             for(int i = 0; i < rqst_array.size() -1; i++)
             {
                 if(rqst_array.get(i).Get_Num() > rqst_array.get(i+1).Get_Num())
                 {
                     rqst_array.get(i).Swap(rqst_array.get(i+1));
-                    change++;
+                    zmiana = true;
+                    break;
                 }
             }
         }
